@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
+import generateToken from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
   try {
@@ -57,17 +58,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: "Invalid credentials" });
     }
 
-    const token = jwt.sign(
-      { id: user._id, isAdmin: user.isAdmin },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
-
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-    });
+    const token = await generateToken(user._id, user.isAdmin, res);
 
     res.status(200).json({
       message: "Login successful",
@@ -76,7 +67,6 @@ export const login = async (req, res) => {
         email: user.email,
         isAdmin: user.isAdmin,
       },
-      token,
     });
   } catch (error) {
     console.error("Login error:", error.message);
