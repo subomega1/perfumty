@@ -1,5 +1,4 @@
-// models/Order.js
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
@@ -22,4 +21,5 @@ OrderSchema.methods.calculateShipping = function (totalPrice) {
     this.shipping_cost = totalPrice >= 150 ? 0 : 7;
 };
 
-module.exports = mongoose.model('Order', OrderSchema);
+const Order = mongoose.model('Order', OrderSchema);
+export default Order

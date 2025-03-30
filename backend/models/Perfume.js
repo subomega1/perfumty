@@ -1,5 +1,4 @@
-// models/Perfume.js
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const PerfumeSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
@@ -36,4 +35,5 @@ PerfumeSchema.methods.calculatePrice = function () {
     return price;
 };
 
-module.exports = mongoose.model('Perfume', PerfumeSchema);
+const Perfume = mongoose.model('Perfume', PerfumeSchema);
+export default Perfume
