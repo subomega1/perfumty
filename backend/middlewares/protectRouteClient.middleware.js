@@ -31,3 +31,4 @@ const protectRouteClient = async (req, res, next) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 };
+export default protectRouteClient;
