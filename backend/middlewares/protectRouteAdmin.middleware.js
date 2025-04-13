@@ -24,7 +24,7 @@ const protectRouteAdmin = async (req, res, next) => {
         .status(401)
         .json({ message: "Not authorized: user is not an admin" });
     }
-    req.user = user;
+    req.userId = user._id;
     next();
   } catch (error) {
     console.log("error in protectRouteAdmin middleware", error.message);

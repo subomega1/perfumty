@@ -1,12 +1,12 @@
-
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import generateToken from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
   try {
-    const { name, email, password, confirmPassword, isAdmin } = req.body;
-    if (!name || !email || !password || !confirmPassword || !isAdmin) {
+    const { name, email, password, confirmPassword } = req.body;
+    console.log(`${name} ${email} ${password} ${confirmPassword}`);
+    if (!name || !email || !password || !confirmPassword) {
       return res.status(400).json({ error: "All fields are required" });
     }
     const user = await User.findOne({ email });
@@ -22,7 +22,6 @@ export const signup = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      isAdmin,
     });
     if (newUser) {
       await newUser.save();
@@ -59,7 +58,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: "Invalid credentials" });
     }
 
-     await generateToken(user._id,res);
+    await generateToken(user._id, res);
 
     res.status(200).json({
       message: "Login successful",
@@ -78,4 +77,3 @@ export const logout = (req, res) => {
   res.clearCookie("jwt");
   res.status(200).json({ message: "Logout successful" });
 };
-

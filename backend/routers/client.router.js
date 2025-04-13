@@ -8,21 +8,21 @@ import {
   modifyClientPerfume,
 } from "../controllers/client.controller.js"; 
 
-const router = express.Router();
+const clientRouter = express.Router();
 
 // Get all perfumes of the client
-router.get("/client", protectRouteClient, getClientPerfumes);
+clientRouter.get("/client", protectRouteClient, getClientPerfumes);
 
 // Get one specific perfume
-router.get("/client/:id", protectRouteClient, getClientPerfumeById);
+clientRouter.get("/client/:id", protectRouteClient, getClientPerfumeById);
 
 // Create a new perfume
-router.post("/client", protectRouteClient, createClientPerfume);
+clientRouter.post("/client", protectRouteClient, createClientPerfume);
 
 // Modify a perfume
-router.put("/client/:id", protectRouteClient, modifyClientPerfume);
+clientRouter.put("/client/:id", protectRouteClient, modifyClientPerfume);
 
 // Delete a perfume
-router.delete("/client/:id", protectRouteClient, deleteClientPerfume);
+clientRouter.delete("/client/:id", protectRouteClient, deleteClientPerfume);
 
-export default router;
+export default clientRouter;
