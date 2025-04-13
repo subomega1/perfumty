@@ -13,18 +13,13 @@ const protectRouteClient = async (req, res, next) => {
     if (!decode) {
       return res.status(401).json({ message: "Not authorized: invalid token" });
     }
-    const user = await User.findById(decode.id.select("-password"));
+    const user = await User.findById(decode.id).select("-password");
     if (!user) {
       return res
         .status(404)
         .json({ message: "Not authorized: user not found" });
     }
-    if (user.isAdmin) {
-      return res
-        .status(401)
-        .json({ message: "Not authorized: user is not a client" });
-    }
-    req.user = user;
+    req.userId = user._id;
     next();
   } catch (error) {
     console.log("error in protectRouteClient middleware", error.message);

@@ -8,11 +8,11 @@ const PerfumeSchema = new mongoose.Schema(
       required: true,
     },
 
-    top_notes: { type: [String], required: true },
-    middle_notes: { type: [String], required: true },
-    base_notes: { type: [String], required: true },
+    top_notes: { type: String, required: true },
+    middle_notes: { type: String, required: true },
+    base_notes: { type: String, required: true },
 
-    size: { type: String, enum: ["100ml", "200ml"], required: true },
+    size: { type: Number, enum: [100, 200], required: true },
     intensity: {
       type: String,
       enum: ["Eau de Toilette", "Eau de Parfum", "Pure Parfum"],
@@ -24,8 +24,9 @@ const PerfumeSchema = new mongoose.Schema(
       required: true,
     },
     premium_ingredients: {
-      type: [String],
+      type: String,
       enum: ["Oud", "Saffron", "Tuberose"],
+      required: true,
     },
 
     price: { type: Number, required: true },
@@ -34,17 +35,19 @@ const PerfumeSchema = new mongoose.Schema(
 );
 
 PerfumeSchema.methods.calculatePrice = function () {
-  let price = this.size === "100ml" ? 89 : 129;
+  let price = this.size === 100 ? 89 : 129;
 
+  // Adjust price based on intensity
   if (this.intensity === "Eau de Parfum") price += 10;
   if (this.intensity === "Pure Parfum") price += 20;
+
+  // Adjust price based on bottle material
   if (this.bottle_material === "Custom") price += 10;
 
-  this.premium_ingredients.forEach((ingredient) => {
-    if (ingredient === "Oud") price += 25;
-    if (ingredient === "Saffron") price += 15;
-    if (ingredient === "Tuberose") price += 10;
-  });
+  // Adjust price based on premium ingredients
+  if (this.premium_ingredients === "Oud") price += 25;
+  if (this.premium_ingredients === "Saffron") price += 15;
+  if (this.premium_ingredients === "Tuberose") price += 10;
 
   return price;
 };

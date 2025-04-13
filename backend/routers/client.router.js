@@ -1,20 +1,28 @@
 import express from "express";
 import protectRouteClient from "../middlewares/protectRouteClient.middleware.js";
+import {
+  createClientPerfume,
+  getClientPerfumes,
+  getClientPerfumeById,
+  deleteClientPerfume,
+  modifyClientPerfume,
+} from "../controllers/client.controller.js"; 
 
+const clientRouter = express.Router();
 
+// Get all perfumes of the client
+clientRouter.get("/client", protectRouteClient, getClientPerfumes);
 
-const router = express.Router();
+// Get one specific perfume
+clientRouter.get("/client/:id", protectRouteClient, getClientPerfumeById);
 
-//get all clients perfume
-router.get("/client",protectRouteClient, /*hire the function of the controller*/ );
+// Create a new perfume
+clientRouter.post("/client", protectRouteClient, createClientPerfume);
 
+// Modify a perfume
+clientRouter.put("/client/:id", protectRouteClient, modifyClientPerfume);
 
-//create client perfume
-router.post("/client",protectRouteClient, /*hire the function of the controller*/ );
+// Delete a perfume
+clientRouter.delete("/client/:id", protectRouteClient, deleteClientPerfume);
 
-//modify client perfume
-// don't forget the middleware like the get look up ^
-router.put("/client/:id", );
-
-//delete client perfume
-router.delete("/client/:id", );
+export default clientRouter;
