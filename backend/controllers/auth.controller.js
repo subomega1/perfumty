@@ -30,7 +30,6 @@ export const signup = async (req, res) => {
         user: {
           name: newUser.name,
           email: newUser.email,
-          isAdmin: newUser.isAdmin,
         },
       });
     } else {
@@ -65,7 +64,6 @@ export const login = async (req, res) => {
       user: {
         name: user.name,
         email: user.email,
-        isAdmin: user.isAdmin,
       },
     });
   } catch (error) {

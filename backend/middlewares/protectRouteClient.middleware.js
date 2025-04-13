@@ -19,11 +19,6 @@ const protectRouteClient = async (req, res, next) => {
         .status(404)
         .json({ message: "Not authorized: user not found" });
     }
-    if (user.isAdmin) {
-      return res
-        .status(401)
-        .json({ message: "Not authorized: user is not a client" });
-    }
     req.userId = user._id;
     next();
   } catch (error) {
