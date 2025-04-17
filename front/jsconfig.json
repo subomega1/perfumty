@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // this is important to tell TypeScript where to start resolving from
+    "paths": {
+      "@/*": ["./*"] // This resolves the `@/` prefix to your project root
+    }
+  }
+}
