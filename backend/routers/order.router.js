@@ -6,15 +6,15 @@ import {
   getClientOrderById
 } from "../controllers/order.controller.js"; 
 
-const router = express.Router();
+const orderRouter = express.Router();
 
 // Créer une commande
-router.post("/orders", protectRouteClient, createOrder);
+orderRouter.post("/orders", protectRouteClient, createOrder);
 
 // Obtenir toutes les commandes du client
-router.get("/orders", protectRouteClient, getClientOrders);
+orderRouter.get("/orders", protectRouteClient, getClientOrders);
 
 // Obtenir une commande spécifique
-router.get("/orders/:id", protectRouteClient, getClientOrderById);
+orderRouter.get("/orders/:id", protectRouteClient, getClientOrderById);
 
-export default router;
+export default orderRouter;
