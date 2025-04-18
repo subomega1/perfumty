@@ -20,12 +20,14 @@ export default function CharacteristicsSelector({
           <label className="block text-sm font-medium mb-2">Size</label>
           <select
             value={selectedSize.name}
-            onChange={(e) => onSizeChange(sizes.find(s => s.name === e.target.value))}
+            onChange={(e) =>
+              onSizeChange(sizes.find(s => s.name === Number(e.target.value)))
+            }
             className="w-full p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-transparent"
           >
             {sizes.map((size) => (
               <option key={size.name} value={size.name}>
-                {size.name} (${size.price})
+                {size.name} ml (${size.price})
               </option>
             ))}
           </select>

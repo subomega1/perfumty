@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import api from '@/lib/api';
+import { toast, } from 'react-toastify';
 
 export default function OrderModal({
   isOpen,
@@ -24,36 +26,48 @@ export default function OrderModal({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const orderData = {
-      top_note: selectedTopNote?.name,
-      middle_note: selectedMiddleNote?.name,
-      base_note: selectedBaseNote?.name,
-      size: selectedSize?.name,
-      intensity: selectedIntensity?.name,
-      bottle: selectedBottle?.name,
-      premium_ingredients: selectedPremium?.name || null,
-      gift_message: formData.gift_message,
-      delivery_date: formData.delivery_date,
-      sample: formData.sample,
-      total_price: totalPrice,
-    };
-    
 
     try {
-      const res = await fetch('/api/orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderData),
+      const perfumeRes = await api.post('/client/', {
+        top_note: selectedTopNote?.name,
+        middle_note: selectedMiddleNote?.name,
+        base_note: selectedBaseNote?.name,
+        size: selectedSize?.name,
+        intensity: selectedIntensity?.name,
+        bottle_material: selectedBottle?.name,
+        premium_ingredients: selectedPremium?.name || null,
       });
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed to create order');
-      console.log('Order success:', data);
+      const perfumeId = perfumeRes?.data?.perfumeId;
+      if (!perfumeId) throw new Error('Failed to get perfume ID');
+
+      const orderRes = await api.post('/order', {
+        perfumeId,
+        gift_message: formData.gift_message,
+        delivery_date: formData.delivery_date,
+        sample: formData.sample,
+      });
+
+      toast.success('Order placed successfully!');
+      console.log('Order success:', orderRes.data);
       onClose();
     } catch (err) {
-      console.error('Error submitting order:', err.message);
+      const fallbackMessage = 'An unexpected error occurred while submitting your order.';
+      let message = fallbackMessage;
+
+      // Log full error
+      console.error('Order submission error:', err);
+
+      // Check for HTML response instead of JSON
+      if (err.response?.data && typeof err.response.data === 'string' && err.response.data.startsWith('<!DOCTYPE')) {
+        message = 'Server returned unexpected HTML. Check if the API route is correct.';
+      } else if (err.response?.data?.error) {
+        message = err.response.data.error;
+      } else if (err.message) {
+        message = err.message;
+      }
+
+      toast.error(message, { id: toastId });
     }
   };
 
@@ -80,11 +94,7 @@ export default function OrderModal({
             <p>Size: {selectedSize?.name}</p>
             <p>Intensity: {selectedIntensity?.name}</p>
             <p>Bottle: {selectedBottle?.name}</p>
-            {selectedPremium ? (
-              <p>Premium Ingredient: {selectedPremium.name}</p>
-            ) : (
-              <p>Premium Ingredient: None</p>
-            )}
+            <p>Premium Ingredient: {selectedPremium?.name || 'None'}</p>
             <p className="text-lg font-semibold mt-4">Total: ${totalPrice}</p>
           </div>
         </div>

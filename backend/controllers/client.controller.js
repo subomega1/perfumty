@@ -74,6 +74,7 @@ export const createClientPerfume = async (req, res) => {
     await newPerfume.save();
     res.status(201).json({
       message: "Perfume created successfully",
+      perfumeId: newPerfume._id,
       perfume: {
         top_notes: newPerfume.top_notes,
         middle_notes: newPerfume.middle_notes,

@@ -33,14 +33,14 @@ const scents = {
 };
 
 const sizes = [
-  { name: '100ml', price: 89 },
-  { name: '200ml', price: 129 },
+  { name: 100, price: 89 },
+  { name: 200, price: 129 },
 ];
 
 const intensities = [
   { name: 'Eau de Toilette', price: 100 },
   { name: 'Eau de Parfum', price: 200 },
-  { name: 'Parfum', price: 300 },
+  { name: 'Pure Parfum', price: 300 },
 ];
 
 const bottles = [
@@ -49,9 +49,9 @@ const bottles = [
 ];
 
 const premiumIngredients = [
-  { name: 'Oud', description: 'Rare and precious wood essence', price: 525 },
-  { name: 'Saffron', description: 'Exotic spice with rich aroma', price: 515 },
-  { name: 'Tuberose', description: 'Luxurious white floral note', price: 510 },
+  { name: 'Oud', description: 'Rare and precious wood essence', price: 25 },
+  { name: 'Saffron', description: 'Exotic spice with rich aroma', price: 15 },
+  { name: 'Tuberose', description: 'Luxurious white floral note', price: 10 },
 ];
 
 export default function Home() {
@@ -95,7 +95,7 @@ export default function Home() {
     <div className="h-screen bg-gray-50 dark:bg-gray-900">
       <div className="flex h-screen">
         {/* LEFT SECTION */}
-        <div className="w-2/3 justify-center px-10 space-y-10 flex flex-col align-middle py-10">
+        <div className="w-2/3 justify-center px-36  space-y-10 flex flex-col align-middle py-10">
           <Image src="/logo.png" alt="logo" width={150} height={150} />
           <div className="items-center justify-center">
             <div className="mb-6">
