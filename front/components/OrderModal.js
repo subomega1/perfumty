@@ -7,8 +7,9 @@ export default function OrderModal({
   isOpen,
   onClose,
   totalPrice,
-  perfumeId,
-  selectedScents,
+  selectedTopNote,
+  selectedMiddleNote,
+  selectedBaseNote,
   selectedSize,
   selectedIntensity,
   selectedBottle,
@@ -24,11 +25,19 @@ export default function OrderModal({
     e.preventDefault();
 
     const orderData = {
-      perfumeId,
+      top_note: selectedTopNote?.name,
+      middle_note: selectedMiddleNote?.name,
+      base_note: selectedBaseNote?.name,
+      size: selectedSize?.name,
+      intensity: selectedIntensity?.name,
+      bottle: selectedBottle?.name,
+      premium_ingredients: selectedPremium?.name || null,
       gift_message: formData.gift_message,
       delivery_date: formData.delivery_date,
       sample: formData.sample,
+      total_price: totalPrice,
     };
+    
 
     try {
       const res = await fetch('/api/orders', {
@@ -65,12 +74,16 @@ export default function OrderModal({
         <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
           <h3 className="font-semibold mb-2">Order Summary</h3>
           <div className="space-y-2 text-sm">
-            <p>Selected Scents: {selectedScents.map(s => s.name).join(', ')}</p>
-            <p>Size: {selectedSize.name}</p>
-            <p>Intensity: {selectedIntensity.name}</p>
-            <p>Bottle: {selectedBottle.name}</p>
-            {selectedPremium.length > 0 && (
-              <p>Premium Ingredients: {selectedPremium.map(p => p.name).join(', ')}</p>
+            <p>Top Note: {selectedTopNote?.name || 'None'}</p>
+            <p>Middle Note: {selectedMiddleNote?.name || 'None'}</p>
+            <p>Base Note: {selectedBaseNote?.name || 'None'}</p>
+            <p>Size: {selectedSize?.name}</p>
+            <p>Intensity: {selectedIntensity?.name}</p>
+            <p>Bottle: {selectedBottle?.name}</p>
+            {selectedPremium ? (
+              <p>Premium Ingredient: {selectedPremium.name}</p>
+            ) : (
+              <p>Premium Ingredient: None</p>
             )}
             <p className="text-lg font-semibold mt-4">Total: ${totalPrice}</p>
           </div>

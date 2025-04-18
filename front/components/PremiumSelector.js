@@ -15,8 +15,11 @@ export default function PremiumSelector({ premiumIngredients, selectedPremium, o
             <input
               type="checkbox"
               id={ingredient.name}
-              checked={!!selectedPremium.find(i => i.name === ingredient.name)}
-              onChange={() => onPremiumSelect(ingredient)}
+              checked={selectedPremium?.name === ingredient.name}
+              onChange={() => {
+                const isSelected = selectedPremium?.name === ingredient.name;
+                onPremiumSelect(isSelected ? null : ingredient);
+              }}
               className="w-4 h-4 text-purple-600 rounded border-gray-300 focus:ring-purple-500"
             />
             <label htmlFor={ingredient.name} className="flex-1">
