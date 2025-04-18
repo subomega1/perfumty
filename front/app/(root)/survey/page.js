@@ -12,23 +12,23 @@ import Image from 'next/image';
 
 const scents = {
   top: [
-    { name: 'Bergamot', price: 150 },
-    { name: 'Orange', price: 120 },
-    { name: 'Lemon', price: 100 },
-    { name: 'Mint', price: 110 },
-    { name: 'Lavender', price: 130 },
+    { name: 'Bergamot', price: 10 },
+    { name: 'Orange', price: 10 },
+    { name: 'Lemon', price: 10 },
+    { name: 'Mint', price: 10 },
+    { name: 'Lavender', price: 10 },
   ],
   middle: [
-    { name: 'Rose', price: 180 },
-    { name: 'Jasmin', price: 200 },
-    { name: 'Cinnamon', price: 150 },
-    { name: 'Geranium', price: 160 },
+    { name: 'Rose', price: 10 },
+    { name: 'Jasmin', price: 10 },
+    { name: 'Cinnamon', price: 10 },
+    { name: 'Geranium', price: 10 },
   ],
   base: [
-    { name: 'Vanilla', price: 140 },
-    { name: 'Sandalwood', price: 220 },
-    { name: 'Musk', price: 250 },
-    { name: 'Cedarwood', price: 180 },
+    { name: 'Vanilla', price: 10 },
+    { name: 'Sandalwood', price: 10 },
+    { name: 'Musk', price: 10 },
+    { name: 'Cedarwood', price: 10 },
   ],
 };
 
