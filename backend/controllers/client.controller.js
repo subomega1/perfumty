@@ -71,7 +71,6 @@ export const createClientPerfume = async (req, res) => {
       premium_ingredients: premium_ingredients,
     });
     newPerfume.price = newPerfume.calculatePrice();
-    newPerfume.price = newPerfume.calculatePrice();
     await newPerfume.save();
     res.status(201).json({
       message: "Perfume created successfully",
@@ -125,13 +124,14 @@ export const getClientPerfumes = async (req, res) => {
 export const getClientPerfumeById = async (req, res) => {
   try {
     const userId = req.userId;
+    if (!userId) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
     const perfumeId = req.params.id;
     const perfume = await Perfume.findOne({ _id: perfumeId, userId });
 
     if (!perfume) {
-      return res
-        .status(404)
-        .json({ error: "Perfume not found or unauthorized" });
+      return res.status(404).json({ error: "Perfume not found" });
     }
 
     res.status(200).json({
@@ -157,12 +157,15 @@ export const getClientPerfumeById = async (req, res) => {
 export const deleteClientPerfume = async (req, res) => {
   try {
     const userId = req.userId;
+    if (!userId) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
     const perfumeId = req.params.id;
     const perfume = await Perfume.findOneAndDelete({ _id: perfumeId, userId });
     if (!perfume) {
       return res
         .status(404)
-        .json({ error: "Perfume not found or unauthorized" });
+        .json({ error: "Perfume not found" });
     }
     res.status(200).json({ message: "Perfume deleted successfully" });
   } catch (error) {
@@ -175,6 +178,9 @@ export const deleteClientPerfume = async (req, res) => {
 export const modifyClientPerfume = async (req, res) => {
   try {
     const userId = req.userId;
+    if (!userId) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
     const perfumeId = req.params.id;
     const updatedPerfume = await Perfume.findOneAndUpdate(
       { _id: perfumeId, userId },
@@ -184,7 +190,7 @@ export const modifyClientPerfume = async (req, res) => {
     if (!updatedPerfume) {
       return res
         .status(404)
-        .json({ error: "Perfume not found or unauthorized" });
+        .json({ error: "Perfume not found " });
     }
     const {
       top_note,
