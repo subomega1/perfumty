@@ -285,14 +285,14 @@ export default function PerfumeCustomizer() {
         {/* Header */}
         <header className="mb-8 text-center">
           <Image 
-            src="/logo.png" 
+            src="/perfumty1.png" 
             alt="Perfumty" 
-            width={180} 
-            height={80}
+            width={500} 
+            height={1000}
             className="mx-auto"
           />
-          <h1 className="mt-4 text-3xl font-serif font-bold text-gray-800">
-            Create Your Signature Scent
+          <h1 className="mt-4 text-3xl font-serif font-bold text-gray-800 italic">
+            Create Your Signature Scent !
           </h1>
         </header>
   
@@ -402,9 +402,9 @@ export default function PerfumeCustomizer() {
               <Image
                 src={
                   step === 1
-                    ? '/scent.png'
+                    ? '/step1.webp'
                     : step === 2
-                    ? '/bottle.png'
+                    ? '/step2.avif'
                     : '/premium.png'
                 }
                 alt="Perfume Bottle"

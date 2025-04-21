@@ -52,6 +52,8 @@ import Image from "next/image";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 const Layout = ({ children }) => {
     return (
         <div className="flex min-h-screen bg-gradient-to-t from-[#fdf1f6] via-[#f9dde8] to-[#fef6f2] relative overflow-hidden">
@@ -78,20 +80,25 @@ const Layout = ({ children }) => {
             </div>
 
             {/* Left Panel with background image and overlay */}
-            <section className="hidden lg:flex flex-1 items-center justify-center relative z-20">
-               
+            <section className="hidden lg:flex w-1/2 relative rounded-r-[100px] overflow-hidden">
+    <div
+      className="absolute inset-0 bg-cover bg-center"
+      style={{ backgroundImage: "url('/backgroundauth1.avif')" }}
+    ></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-[#fdf1f6] to-[#f9dde8] opacity-70"></div>
+
                 {/* Content with transparent bg */}
-                <div className="relative z-10 flex max-h-[800px] max-w-[600px] flex-col justify-center space-y-12 w-full pl-10 px-4">
-                    <div className="space-y-5 w-full items-center justify-center">
-                        <h1 className="text-4xl font-bold text-gray-800 font-serif tracking-wide">
-                            Welcome to
-                        </h1>
+                <div className="relative z-10 flex max-h-[800px] max-w-[600px] flex-col ml-10 mt-10 justify-center space-y-12 w-full pl-10 px-4">
+                    <div className="space-y-5 text-white w-full mt-20 ml-20 mr-5 ">
+                        
                         <Image 
-                            className="justify-self-center z-20 relative"
-                            src="/logo.png"
+                            className="relative z-10 flex flex-col items-center  w-full rounded-lg shadow-lg"
+                            src="/signuplogo.png"
                             alt="logo"
-                            width={350}
-                            height={400}
+                            width={800}
+                            height={700}
+                           
+                           
                         />
                     </div>
                 </div>
