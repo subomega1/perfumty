@@ -21,6 +21,11 @@ export default {
   			]
   		},
   		colors: {
+			coral: '#B9A3D1',
+        	plum: '#E6ADEC',
+        	lavender: '#C287E8',
+        	'cosmic-latte': '#F8F4E3',
+        'dim-gray': '#706C61',
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
@@ -62,10 +67,25 @@ export default {
   				'5': 'hsl(var(--chart-5))'
   			}
   		},
+		  quiz: {
+			'purple-50': '#faf5ff',
+			'purple-100': '#f3e8ff',
+			'purple-200': '#e9d5ff',
+			'purple-500': '#a855f7',
+			'purple-600': '#9333ea',
+			'purple-700': '#7e22ce',
+			'gray-500': '#6b7280',
+			'gray-600': '#4b5563',
+			'gray-800': '#1f2937',
+		  },
+		  boxShadow: {
+			sm: '0 1px 2px rgba(0, 0, 0, 0.05)',
+			md: '0 4px 6px rgba(0, 0, 0, 0.1)',
+		  },
   		borderRadius: {
   			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+			  md: '0.375rem',
+			    			sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
   			'accordion-down': {

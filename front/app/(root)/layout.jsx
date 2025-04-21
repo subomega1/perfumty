@@ -6,8 +6,22 @@ export default function RootLayout({ children }) {
       <div
        
       >
-        <ToastContainer position="top-right" autoClose={3000} />
-        {children}
+ <ToastContainer 
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        toastClassName="font-sans"
+        bodyClassName="text-sm"
+        progressClassName="bg-gradient-to-r from-purple-500 to-pink-500"
+      />
+              {children}
       </div>
   );
 }
