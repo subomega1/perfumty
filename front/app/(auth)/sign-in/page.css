@@ -99,10 +99,7 @@
   animation: float-delay 10s ease-in-out infinite 2s;
 }
 
-/* Form Styles */
-.form-group {
-  margin-bottom: 1.5rem;
-}
+
 
 .form-label {
   display: block;

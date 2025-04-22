@@ -59,7 +59,7 @@ const PageSignIn = () => {
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="form-title">Sign In</h2>
 
-        <div className="form-group">
+        <div className="mb-5">
           <label className="form-label">Email</label>
           <div className="input-group">
             <IoIosMail className="input-icon" />
@@ -76,7 +76,7 @@ const PageSignIn = () => {
           )}
         </div>
 
-        <div className="form-group">
+        <div className="mb-5">
           <label className="form-label">Password</label>
           <div className="input-group">
             <MdOutlineLockPerson className="input-icon" />

@@ -50,6 +50,7 @@ export default function OrderModal({
         delivery_date: formData.delivery_date,
         sample: formData.sample,
       });
+      //console.log('Order submission error:', err);
 
       toast.success('Order placed successfully!');
       console.log('Order success:', orderRes.data);

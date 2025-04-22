@@ -44,8 +44,8 @@ export default function CharacteristicsSelector({
         <select
 value={selectedSize?.name}
 onChange={(e) =>
-            onSizeChange(sizes.find((s) => s.name === e.target.value))
-          }
+  onSizeChange(sizes.find((s) => s.name === Number(e.target.value)))
+}
           className="w-full p-3 rounded-xl bg-transparent border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300"
         >
           {sizes.map((size) => (

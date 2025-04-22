@@ -20,7 +20,9 @@ const SCENTS = {
   base: ['Vanilla', 'Sandalwood', 'Musk', 'Cedarwood'].map(name => ({ name, price: 10 })),
 };
 
-const SIZES = [100, 200].map((ml, i) => ({ name: ml, price: 89 + i * 40 }));
+const SIZES =[{ name: 100, price: 89 },
+{ name: 200, price: 129 },
+];
 const INTENSITIES = [
   { name: 'Eau de Toilette', price: 100, description: 'Light, 5-15% essence' },
   { name: 'Eau de Parfum', price: 200, description: 'Rich, 15-20% essence' },

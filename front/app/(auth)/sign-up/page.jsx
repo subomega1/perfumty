@@ -33,17 +33,20 @@ const PageSignUp = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    setError,
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(signupSchema),
   });
-
-  const onSubmit = async (formData) => {
+  const onSubmit = async (data) => {
     setIsLoading(true);
     try {
-      const { confirmPassword, ...userData } = formData;
-      const response = await api.post("/auth/signup", userData);
+      const response = await api.post("/auth/signup", {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        confirmPassword: data.confirmPassword,
+      });
+
 
       if (response.status === 201) {
         toast.success("Registration successful! Redirecting...");
