@@ -3,7 +3,7 @@ import React from 'react'
 import { motion } from "framer-motion";
 
 import Link from 'next/link'
-const text1 = "Perfume";
+const text1 = "Perfumty";
 const text2 = "Customize your own";
 
 const letterAnimation = {
@@ -20,13 +20,13 @@ const letterAnimation = {
 const page = () => {
   return (
   
-    <div className="bg-[#f8f4e3] flex flex-row justify-center w-full">
-      <div className="bg-[#f8f4e3] overflow-hidden w-[1440px] h-[2590px]">
+    <div className="bg-[#f8f4e3] dark:bg-gray-800 flex flex-row justify-center w-full">
+      <div className="bg-[#f8f4e3] dark:bg-gray-800 overflow-hidden w-[1440px] h-[2590px]">
         <div className="relative w-[1808px] h-[2864px] left-[-50px]">
           <div className="relative w-[1708px] h-[2864px]">
             <div className="absolute w-[1708px] h-[2864px] top-0 left-0">
               <div className="absolute w-[1708px] h-[874px] top-0 left-0">   
-                <div className="absolute w-[1418px] h-[678px] top-[140px] left-[72px]">
+                <div className="absolute w-[1418px] h-[678px] top-5 left-[72px]">
                   <div className="absolute w-[1391px] h-[678px] top-0 left-[27px]">
                     <div className="absolute top-[539px] left-[664px] [font-family:'Josefin_Slab-SemiBold',Helvetica] font-semibold text-black text-xl tracking-[0] leading-[normal]">
                       Flower complexions
@@ -75,7 +75,7 @@ const page = () => {
 
                     
 
-                    <p className="absolute top-[625px] left-[21px] [font-family:'Afacad-Regular',Helvetica] font-normal text-black text-[32px] text-center tracking-[2.00px] leading-[normal]">
+                    <p className="absolute top-[675px] left-[21px] [font-family:'Afacad-Regular',Helvetica] font-normal text-black text-[32px] text-center tracking-[2.00px] leading-[normal]">
                       FIND YOUR SIGNATURE SCENT – TAKE OUR PERSONALITY QUIZ!
                     </p>
 
@@ -96,9 +96,9 @@ const page = () => {
                       florals, craft the perfect perfume that’s made just for
                       you!
                     </p>
-                    <div className="absolute w-[586px] top-6 left-0">
+                    <div className="absolute w-[586px] top-0 left-0">
       {/* Perfume */}
-      <div className="[font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-[108.5px] tracking-[0] leading-[125.1px] flex flex-wrap">
+      <div className="[font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] dark:text-cosmic-latte text-[108.5px] tracking-[0] leading-[125.1px] flex flex-wrap">
         {text1.split("").map((letter, index) => (
           <motion.span
             key={index}
@@ -113,7 +113,7 @@ const page = () => {
       </div>
 
       {/* Customize your own */}
-      <div className="text-[60px] leading-[83.4px] flex flex-wrap">
+      <div className="text-[60px] leading-[83.4px] dark:text-gray-100 flex flex-wrap">
         {text2.split("").map((letter, index) => (
           <motion.span
             key={index}
@@ -231,9 +231,9 @@ const page = () => {
                       </p>
 
                       <div className="absolute w-[167px] h-11 top-[361px] left-[217px]">
-                        <div className="relative w-[165px] h-11 bg-[#ff8966] rounded-[20px]">
+                        <div className="relative w-[165px] h-11 bg-[#D7A6A1] rounded-[20px]">
                           <Link href="/collection">
-                          <div className="absolute top-2.5 left-[33px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
+                          <div className="absolute top-2.5 left-[28px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
                             SHOP NOW
                           </div>
                           </Link>
@@ -280,10 +280,10 @@ const page = () => {
                     </p>
 
                     <div className="absolute w-[167px] h-11 top-[238px] left-[218px]">
-                      <div className="relative w-[165px] h-11 bg-[#ff8966] rounded-[20px]">
+                      <div className="relative w-[165px] h-11 bg-[#D7A6A1] rounded-[20px]">
                         <Link
                         href="/collection">
-                        <div className="absolute top-2.5 left-[33px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
+                        <div className="absolute top-2.5 left-[28px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
                           SHOP NOW
                         </div>
                         </Link>
@@ -292,10 +292,10 @@ const page = () => {
                   </div>
 
                   <div className="absolute w-[167px] h-11 top-[484px] left-[218px]">
-                    <div className="relative w-[165px] h-11 bg-[#ff8966] rounded-[20px]">
+                    <div className="relative w-[165px] h-11 bg-[#D7A6A1] rounded-[20px]">
                       <Link
                       href="/collection">
-                      <div className="absolute top-2.5 left-[33px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
+                      <div className="absolute top-2.5 left-[28px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
                         SHOP NOW
                       </div>
                       </Link>
@@ -303,10 +303,10 @@ const page = () => {
                   </div>
 
                   <div className="absolute w-[167px] h-11 top-[484px] left-[957px]">
-                    <div className="relative w-[165px] h-11 bg-[#ff8966] rounded-[20px]">
+                    <div className="relative w-[165px] h-11 bg-[#D7A6A1] rounded-[20px]">
                     <Link
                       href="/collection">
-                      <div className="absolute top-2.5 left-[33px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
+                      <div className="absolute top-2.5 left-[28px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
                         SHOP NOW
                       </div>
                       </Link>
@@ -339,29 +339,23 @@ const page = () => {
                 alt="Group"
                 src="https://c.animaapp.com/89QQPZoh/img/group-25@2x.png"
               />
-
-              <img
-                className="absolute w-[237px] h-[58px] top-[54px] left-[193px]"
-                alt="Bg"
-                src="https://c.animaapp.com/89QQPZoh/img/bg.svg"
-              />
               <Link
               href="/quiz">
+              <div className="absolute bg-[#D7A6A1] py-2 px-6 rounded-lg top-[67px] left-[220px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-base text-center tracking-[2.00px] leading-[normal]">
               <button>
-              <div className="absolute top-[67px] left-[220px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-sm text-center tracking-[2.00px] leading-[normal]">
-                PERSONALITY-SCENT
-                <br />
-                QUIZ!
-              </div>
+                 TAKE
+                    SCENT-QUIZ!
               </button>
+              </div>
+
               </Link>
             </div>
             <Link
             href='/survey' 
             >
             <button>
-            <div className="absolute w-[259px] h-[58px] top-[970px] left-[137px] bg-[url(https://c.animaapp.com/89QQPZoh/img/bg-1.svg)] bg-[100%_100%]">
-              <div className="absolute top-[20px] left-[27px] [font-family:'Afacad-Regular',Helvetica] font-normal text-black text-[15px] tracking-[2.00px] leading-[normal]">
+            <div className="absolute w-[259px] h-[58px] top-[970px] left-[137px] ">
+              <div className="absolute top-[20px] bg-[#D7A6A1] py-2 px-6 rounded-lg  left-[27px] [font-family:'Afacad-Regular',Helvetica] font-normal text-black text-[15px] tracking-[2.00px] leading-[normal]">
                 START CUSTOMIZING!
               </div>
             </div>
