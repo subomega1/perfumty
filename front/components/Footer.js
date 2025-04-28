@@ -1,16 +1,21 @@
 import Link from 'next/link';
 
 export default function Footer() {
-  const links = ['Link One', 'Link Two', 'Link Three', 'Link Four', 'Link Five'];
+  const links = ['Our flowers', 'Customize', 'Our story', 'Our collection', 'cart'];
   const footerLinks = ['Privacy Policy', 'Terms of Service', 'Cookies Settings'];
 
   return (
-    <footer className="bg-cosmic-latte py-16 dark:bg-gray-800">
+    <footer className="bg-cosmic-latte pb-16 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-center mb-8">
           <Link href="/" className="flex items-center">
-            <span className="text-4xl text-black mr-2 transform rotate-12 dark:text-cosmic-latte">🌸</span>
-            <span className="font-mochiy text-2xl text-black tracking-wider dark:text-cosmic-latte">Perfumty</span>
+          <div className="w-[300px] h-52">
+                <img 
+                  src="/signuplogo.png" 
+                  alt="Logo" 
+                  className="w-auto h-auto " 
+                />
+              </div> 
           </Link>
         </div>
         <div className="flex justify-center gap-8 mb-8">

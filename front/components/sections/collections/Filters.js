@@ -11,7 +11,7 @@ export default function Filters({ activeFilter, setActiveFilter, searchQuery, se
               className={`px-5 py-2 rounded-full whitespace-nowrap transition-all ${
                 activeFilter === filter
                   ? 'bg-coral text-white'
-                  : 'bg-white text-gray hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700'
+                  : 'bg-white text-gray hover:bg-gray-100 dark:bg-white dark:text-gray-800 dark:hover:bg-gray-700'
               }`}
             >
               {filter}
@@ -24,7 +24,7 @@ export default function Filters({ activeFilter, setActiveFilter, searchQuery, se
             placeholder="Search perfumes..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-full focus:border-purple focus:ring-2 focus:ring-purple/20 outline-none dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200"
+            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-full focus:border-purple focus:ring-2 focus:ring-purple/20 outline-none dark:bg-white dark:border-gray-700 dark:text-gray-200"
           />
           <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">🔍</span>
         </div>

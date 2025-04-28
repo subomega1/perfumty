@@ -1,7 +1,8 @@
+"use client"
 import { useState, useEffect } from 'react';
 import CartLayout from '@/components/sections/cart/CartLayout';
 import { initialCartState } from '../../../constants/cart'; // Import initialCartState
-
+import { toast } from 'react-toastify'; // Import toast for notifications
 export default function Cart() {
   const [state, setState] = useState(initialCartState);
 
@@ -37,16 +38,16 @@ export default function Cart() {
     if (code === 'WELCOME15' && !state.promoApplied) {
       setState((prev) => ({ ...prev, promoApplied: true }));
     } else {
-      alert('Invalid promo code');
+      toast.error('Invalid promo code');
     }
   };
 
   const handleCheckout = () => {
-    alert('Proceeding to checkout... (This would integrate with your payment processor)');
+    toast.success('Proceeding to checkout... (This would integrate with your payment processor)');
   };
 
   const handleSaveForLater = () => {
-    alert('Item saved for later!');
+    toast.success('Item saved for later!');
   };
 
   return (

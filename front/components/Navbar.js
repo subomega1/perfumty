@@ -103,7 +103,7 @@ const Header = () => {
             <IconButton>
               <Search size={20} />
             </IconButton>
-            <Link href="/sing-in">
+            <Link href="/sign-in">
             <IconButton>
               <User size={20} />
             </IconButton>

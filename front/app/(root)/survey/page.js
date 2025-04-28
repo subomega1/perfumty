@@ -82,7 +82,7 @@ export default function PerfumeCustomizer() {
   
         <div className="flex flex-col lg:flex-row gap-8 ">
           {/* Configuration Panel */}
-          <div className="lg:w-2/3 items-center align-middle justify-center bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+          <div className="lg:w-2/3 items-center align-middle justify-center bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1 dark:bg-gray-800">
           <Image 
             src="/perfumty1.png" 
             alt="Perfumty" 
@@ -145,7 +145,7 @@ export default function PerfumeCustomizer() {
                 {step > 1 && (
                   <button
                     onClick={prevStep}
-                    className="back-btn"
+                    className="back-btn dark:text-white"
                   >
                     Back
                   </button>
@@ -185,7 +185,7 @@ export default function PerfumeCustomizer() {
           </div>
   
           {/* Visual Preview */}
-          <div className="lg:w-1/3 bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1 flex flex-col">
+          <div className="lg:w-1/3 bg-white/80 dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-8 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1 flex flex-col">
           <h2 className="scent-category-title text-center text-4xl font-bold bg-gradient-to-r from-pink-300 via-pink-400 to-lilac-300 bg-clip-text text-transparent mb-6 tracking-wide italic font-serif">
   Your Creation
 </h2>

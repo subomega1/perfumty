@@ -1,7 +1,7 @@
 export const ingredients = [
     {
       name: 'Damascene Rose',
-      image: '/images/rose.jpg',
+      image: '/images/rose.jpeg',
       description:
         "Handpicked at dawn in Turkey's Isparta Valley, our roses are steam-distilled within hours of harvest to capture their ethereal essence. Each flower yields only a precious few drops of oil, characterized by a deep, honeyed warmth with subtle spicy undertones.",
       origin: 'Isparta Valley, Turkey',
@@ -9,7 +9,7 @@ export const ingredients = [
     },
     {
       name: 'High-Altitude Lavender',
-      image: '/images/lavender.jpg',
+      image: '/images/lavenderpic.jpg',
       description:
         'Growing at elevations above 2,000 feet in the French Alps, our lavender develops a uniquely complex aroma. The harsh mountain conditions concentrate the essential oils, producing a crisp, herbaceous scent with subtle pine notes.',
       origin: 'French Alps',
@@ -17,7 +17,7 @@ export const ingredients = [
     },
     {
       name: 'Indian Jasmine Sambac',
-      image: '/images/jasmine.jpg',
+      image: '/images/jasminepic.jpg',
       description:
         'Our jasmine flowers are gathered by hand in the moonlit gardens of Tamil Nadu, when their fragrance is most intense. Each blossom is individually selected at perfect maturity, yielding an intoxicating essence with sweet, exotic undertones.',
       origin: 'Tamil Nadu, India',

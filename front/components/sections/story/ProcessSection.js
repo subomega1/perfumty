@@ -27,10 +27,10 @@ export default function ProcessSection() {
             Creating Your Signature Scent
           </h2>
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-story-coral dark:bg-lavender"></div>
+            <div className="absolute left-0 transform translate-x-1/2 w-0.5 h-full bg-black dark:bg-lavender"></div>
             {timelineItems.map((item, index) => (
               <div key={index} className="flex items-center mb-12 flex-col md:flex-row">
-                <div className="w-12 h-12 bg-story-coral text-cosmic-latte rounded-full flex items-center justify-center font-bold z-10 mb-4 md:mb-0 md:mr-8 dark:bg-lavender dark:text-gray-900">
+                <div className="w-12 h-12 bg-dim-gray text-cosmic-latte rounded-full flex items-center justify-center font-bold z-10 mb-4 md:mb-0 md:mr-8 dark:bg-lavender dark:text-gray-900">
                   {item.number}
                 </div>
                 <div className="bg-cosmic-latte p-6 rounded shadow-layer w-full md:w-auto dark:bg-gray-800">

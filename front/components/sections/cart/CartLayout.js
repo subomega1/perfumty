@@ -135,14 +135,19 @@ export default function CartLayout({
       {/* New Creation Card */}
       <div className="creation-card  border-2 border-dashed  border-dim-gray bg-cosmic-latte rounded-md flex items-center justify-center">
         <div className="item-center text-center p-8">
+        <Link href="/survey" className="text-dim-gray font-medium hover:text-black mb-4">
+
           <div className="plus-circle w-16 h-16 bg-plum justify-self-center rounded-full flex items-center justify-center text-white text-2xl mb-4">
             +
           </div>
+          </Link>
           <h3 className="text-lg font-semibold mb-2">Create a New Perfume</h3>
           <p className="text-sm text-gray-600 mb-4">Design your next signature scent</p>
+          <Link href="/survey" className="text-dim-gray font-medium hover:text-black mb-4">
           <button className="bg-coral text-white py-3 px-6 rounded-md font-medium hover:bg-[#e67c5c]">
             Start Creating
           </button>
+          </Link>
         </div>
       </div>
     </div>

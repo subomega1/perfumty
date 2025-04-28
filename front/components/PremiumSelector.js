@@ -18,7 +18,7 @@ export default function PremiumSelector({ premiumIngredients, selectedPremium, o
               className={`flex items-start px-6 py-5 rounded-xl border transition-all cursor-pointer ${
                 isSelected
                   ? 'bg-gradient-to-r from-[#E6ADEC] to-[#C287E8] text-white border-purple-400 shadow-lg'
-                  : 'border-gray-300 dark:border-gray-600 hover:border-purple-400 hover:shadow-md'
+                  : 'border-gray-300 dark:border-gray-600 dark:bg-[#FAF5FF] hover:border-purple-400 hover:shadow-md'
               }`}
             >
               <input

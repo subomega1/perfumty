@@ -3,46 +3,40 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { flowers } from '../../../constants/flowers';
+import { motion } from "framer-motion";
 
 export default function Flowers() {
-  const [theme, setTheme] = useState('light');
-
-  // Toggle dark mode
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  const text1 = "The Origins of Flowers in Perfumety";
+  
+  const letterAnimation = {
+    hidden: { opacity: 0, y: -50 }, // drop from top
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1, // slower animation (0.1s between letters)
+        duration: 0.5, // smooth drop
+      },
+    }),
   };
-
+ 
   return (
     <div className="min-h-screen bg-cosmic-latte font-inter px-4 py-10 space-y-16 dark:bg-gray-900">
-      <Head>
-        <title>The Origins of Flowers in Perfumery | Perfumty</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-
-      {/* Dark Mode Toggle */}
-      <div className="fixed top-4 right-4 z-50">
-        <button
-          onClick={toggleTheme}
-          className="p-2 bg-coral text-white rounded-full dark:bg-lavender"
-          aria-label="Toggle dark mode"
-        >
-          {theme === 'light' ? '🌙' : '☀️'}
-        </button>
-      </div>
 
 
-      <h1 className="text-4xl md:text-5xl font-playfair font-bold italic text-center text-dim-gray mb-10 dark:text-cosmic-latte">
-        The Origins of Flowers in Perfumery
-      </h1>
+<div className="text-4xl md:text-5xl font-playfair font-bold italic tracking-tight text-center text-dim-gray mb-10 dark:text-gray-300">
+      {text1.split("").map((letter, index) => (
+          <motion.span
+            key={index}
+            custom={index}
+            variants={letterAnimation}
+            initial="hidden"
+            animate="visible"
+          >
+            {letter === " " ? "\u00A0" : letter} {/* keeps spaces */}
+          </motion.span>
+        ))}
+        </div>
 
       <div className="flex flex-col lg:flex-row items-center justify-center gap-10 max-w-6xl mx-auto">
         <Image
@@ -51,7 +45,7 @@ export default function Flowers() {
           width={500}
           height={500}
         
-          className="w-[500px] md:w-60"
+          className="w-[350px] "
         />
         <div className="text-center max-w-md">
           <h2 className="text-xl md:text-2xl font-playfair font-semibold italic mb-4 text-dim-gray dark:text-cosmic-latte">
@@ -75,7 +69,7 @@ export default function Flowers() {
           alt="Fleurs"
           width={500}
           height={500}
-          className="w-48 md:w-60"
+          className="w-[300px]"
         />
       </div>
 

@@ -42,21 +42,21 @@ export default function ScentSelector({
     <div className="flex flex-col space-y-3 font-[Quicksand]">
             <h2 className="text-2xl font-bold text-purple-700  tracking-wide">Select your preferred Scents!</h2>
 
-      <div className="bg-white dark:bg-gray-800 rounded-2xl px-6 py-2 shadow border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-[#FAF5FF] rounded-2xl px-6 py-2 shadow border border-gray-200 dark:border-gray-700">
         <h3 className="text-xl font-semibold tracking-wide text-purple-700 mb-4">
           TOP NOTES
         </h3>
         {renderScentButtons(scents.top, selectedTopNote, onTopNoteSelect, 'top')}
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-2xl px-6 py-2 shadow border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-[#FAF5FF] rounded-2xl px-6 py-2 shadow border border-gray-200 dark:border-gray-700">
         <h3 className="text-xl font-semibold tracking-wide text-purple-700 mb-4">
           MIDDLE NOTES
         </h3>
         {renderScentButtons(scents.middle, selectedMiddleNote, onMiddleNoteSelect, 'middle')}
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-2xl px-6 py-2 shadow border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-[#FAF5FF] rounded-2xl px-6 py-2 shadow border border-gray-200 dark:border-gray-700">
         <h3 className="text-xl font-semibold tracking-wide text-purple-700 mb-4">
           BASE NOTES
         </h3>

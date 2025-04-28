@@ -9,7 +9,7 @@ export default function CtaSection() {
           Take our scent personality quiz to start creating your unique fragrance.
         </p>
         <Link href="/quiz">
-          <button className="bg-story-coral text-white px-6 py-3 rounded font-inter font-medium text-base hover:bg-story-coral-hover transition-colors dark:bg-lavender dark:hover:bg-coral">
+          <button className="bg-cosmic-latte text-black px-6 py-3 rounded font-inter font-medium text-base hover:bg-story-coral-hover transition-colors dark:bg-lavender dark:hover:bg-coral">
             Take the Quiz
           </button>
         </Link>

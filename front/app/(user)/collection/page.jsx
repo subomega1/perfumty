@@ -6,28 +6,13 @@ import HeroSection from '@/components/sections/collections/HeroSection';
 import Filters from '@/components/sections/collections/Filters';
 import PerfumeGrid from '@/components/sections/collections/PerfumeGrid';
 import CtaSection from '@/components/sections/collections/CtaSection';
-import NewsletterSection from '@/components/sections/collections/NewsletterSection';
 import { perfumes } from '../../../constants/perfumes'; // Import perfumes
 
 export default function Collection() {
-  const [theme, setTheme] = useState('light');
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredPerfumes, setFilteredPerfumes] = useState(perfumes);
 
-  // Toggle dark mode
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
-  };
 
   // Filter and search perfumes
   useEffect(() => {
@@ -50,25 +35,12 @@ export default function Collection() {
   };
 
   return (
-    <div className="min-h-screen">
-      <Head>
-        <title>Our Collection | Perfumty</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-
-      {/* Dark Mode Toggle */}
-      <div className="fixed top-4 right-4 z-50">
-        <button
-          onClick={toggleTheme}
-          className="p-2 bg-coral text-white rounded-full dark:bg-purple"
-          aria-label="Toggle dark mode"
-        >
-          {theme === 'light' ? '🌙' : '☀️'}
-        </button>
-      </div>
+    <div className="dark:bg-gray-800">
+    
+     
 
       <HeroSection />
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-8 ">
         <Filters
           activeFilter={activeFilter}
           setActiveFilter={setActiveFilter}
@@ -76,9 +48,9 @@ export default function Collection() {
           setSearchQuery={setSearchQuery}
         />
         <PerfumeGrid perfumes={filteredPerfumes} handleAddToCart={handleAddToCart} />
+        </div>
         <CtaSection />
-        <NewsletterSection />
-      </div>
+      
     </div>
   );
 }

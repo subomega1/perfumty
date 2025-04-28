@@ -5,7 +5,7 @@ export const initialCartState = {
         name: 'Custom Blend - Floral Elegance',
         price: 119.0,
         quantity: 1,
-        image: '/images/rosee.jpg',
+        image: '/rosee.jpg',
         details: {
           topNotes: 'Bergamot, Lemon, Lavender',
           middleNotes: 'Rose, Jasmine, Ylang-Ylang',
@@ -21,7 +21,7 @@ export const initialCartState = {
         name: 'Custom Blend - Citrus Breeze',
         price: 65.0,
         quantity: 1,
-        image: '/images/lemonn.png',
+        image: '/lemonn.png',
         details: {
           topNotes: 'Grapefruit, Bergamot, Lemon',
           middleNotes: 'Green Tea, Neroli',

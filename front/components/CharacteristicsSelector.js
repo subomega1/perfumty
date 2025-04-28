@@ -18,8 +18,8 @@ export default function CharacteristicsSelector({
       
 
       {/* Intensity Selector */}
-      <div className="bg-white dark:bg-gray-800 px-6 py-3 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 space-y-3">
-        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
+      <div className="bg-white dark:bg-[#FAF5FF] px-6 py-3 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 space-y-3">
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-800">
           Intensity
         </label>
         <select
@@ -37,8 +37,8 @@ export default function CharacteristicsSelector({
         </select>
       </div>
 {/* Size Selector */}
-<div className="bg-white dark:bg-gray-800 px-6 py-3 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 space-y-3">
-        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
+<div className="bg-white dark:bg-[#FAF5FF] px-6 py-3 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 space-y-3">
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-800">
           Size
         </label>
         <select
@@ -56,8 +56,8 @@ onChange={(e) =>
         </select>
       </div>
       {/* Bottle Selector */}
-      <div className="bg-white dark:bg-gray-800 px-6 py-3 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 space-y-3">
-        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
+      <div className="bg-white dark:bg-[#FAF5FF] px-6 py-3 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 space-y-3">
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-800">
           Bottle Design
         </label>
         <select
