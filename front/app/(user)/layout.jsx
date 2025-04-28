@@ -7,7 +7,9 @@ export default function RootLayout({ children }) {
       <>
       <Navbar />
         <ToastContainer position="top-right" autoClose={3000} />
+        <div className="pt-[100px]">
         {children}
+        </div>
         <Footer/>
       </>
   );
