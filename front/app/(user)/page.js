@@ -231,7 +231,7 @@ const page = () => {
                       </p>
 
                       <div className="absolute w-[167px] h-11 top-[361px] left-[217px]">
-                        <div className="relative w-[165px] h-11 bg-[#ff8966] rounded-[20px]">
+                        <div className="relative w-[165px] h-11 bg-[#B9A3D1] rounded-[20px]">
                           <Link href="/collection">
                           <div className="absolute top-2.5 left-[33px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
                             SHOP NOW
@@ -280,7 +280,7 @@ const page = () => {
                     </p>
 
                     <div className="absolute w-[167px] h-11 top-[238px] left-[218px]">
-                      <div className="relative w-[165px] h-11 bg-[#ff8966] rounded-[20px]">
+                      <div className="relative w-[165px] h-11 bg-[#B9A3D1] rounded-[20px]">
                         <Link
                         href="/collection">
                         <div className="absolute top-2.5 left-[33px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
@@ -292,7 +292,7 @@ const page = () => {
                   </div>
 
                   <div className="absolute w-[167px] h-11 top-[484px] left-[218px]">
-                    <div className="relative w-[165px] h-11 bg-[#ff8966] rounded-[20px]">
+                    <div className="relative w-[165px] h-11 bg-[#B9A3D1] rounded-[20px]">
                       <Link
                       href="/collection">
                       <div className="absolute top-2.5 left-[33px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
@@ -303,7 +303,7 @@ const page = () => {
                   </div>
 
                   <div className="absolute w-[167px] h-11 top-[484px] left-[957px]">
-                    <div className="relative w-[165px] h-11 bg-[#ff8966] rounded-[20px]">
+                    <div className="relative w-[165px] h-11 bg-[#B9A3D1] rounded-[20px]">
                     <Link
                       href="/collection">
                       <div className="absolute top-2.5 left-[33px] [font-family:'Afacad-Regular',Helvetica] font-normal text-[#1c1c1c] text-lg text-center tracking-[2.00px] leading-[normal]">
