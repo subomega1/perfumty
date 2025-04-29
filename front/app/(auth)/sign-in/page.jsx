@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,106 +12,110 @@ import "./page.css";
 import Link from "next/link";
 import api from '@/lib/api';
 
-// 🔒 Define validation schema
 const loginSchema = z.object({
-  email: z
-  .string()
-  .regex(/\@/, "Email must contain @ symbol")
-  .email("Invalid email")
-
-  ,
-  
-  password: z
-              .string()
-              .min(6, "Password must be at least 6 characters long")
-              .max(50, "Password cannot exceed 50 characters")
-              
+  email: z.string()
+    .regex(/\@/, "Email must contain @ symbol")
+    .email("Invalid email"),
+  password: z.string()
+    .min(6, "Password must be at least 6 characters long")
+    .max(50, "Password cannot exceed 50 characters")
 });
 
-const Page = () => {
+const PageSignIn = () => {
   const router = useRouter();
+  const [submitError, setSubmitError] = React.useState("");
 
-  // 🔧 Initialize form
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
 
   const onSubmit = async (data) => {
     try {
-      // Send login request
-      const response = await api.post("/auth/login", {
-        email: data.email,
-        password: data.password,
-      });
-  
-      // Check if response was successful
+      const response = await api.post("/auth/login", data);
+      
       if (response.status === 200) {
-        toast.success("Login successful! 🎉");
-        router.push("/"); // Redirect to home or another page
+        router.push("/");
       } else {
-        // If not successful, show error from response
-        const errorMsg = response.data?.error || response.data?.msg || "Login failed";
-        toast.error(errorMsg);
+        setSubmitError(response.data?.error || "Login failed");
       }
     } catch (err) {
-      // Catch errors and show generic error message
-      toast.error("Something went wrong. Please try again.");
+      setSubmitError(err.response?.data?.message || "Something went wrong");
     }
   };
-  
+
+  useEffect(() => {
+    if (submitError) {
+      toast.error(submitError);
+      setSubmitError("");
+    }
+  }, [submitError]);
 
   return (
-    <div>
+    <div className="auth-container">
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex-column">
-          <label>Email</label>
-        </div>
-        <div className="inputForm">
-          <IoIosMail />
-          <input
-            placeholder="Enter your Email"
-            className={`input`}
-            type="email"
-            {...register("email")}
-          />
-        </div>
-        {errors.email && <p className="text-red-700">{errors.email.message}</p>}
+        <h2 className="form-title">Sign In</h2>
 
-        <div className="flex-column">
-          <label>Password</label>
-        </div>
-        <div className="inputForm">
-          <MdOutlineLockPerson />
-          <input
-            placeholder="Enter your Password"
-            className="input"
-            type="password"
-            {...register("password")}
-          />
-        </div>
-        {errors.password && <p className="text-red-700">{errors.password.message}</p>}
-
-        <div className="flex-row">
-          <span className="span">Forgot password?</span>
+        <div className="mb-5">
+          <label className="form-label">Email</label>
+          <div className="input-group">
+            <IoIosMail className="input-icon" />
+            <input
+              placeholder="Enter your Email"
+              className={`input ${errors.email ? "input-error" : ""}`}
+              type="email"
+              {...register("email")}
+              disabled={isSubmitting}
+            />
+          </div>
+          {errors.email && (
+            <p className="error-message">{errors.email.message}</p>
+          )}
         </div>
 
-        <button className="button-submit" type="submit">
-          Sign In
+        <div className="mb-5">
+          <label className="form-label">Password</label>
+          <div className="input-group">
+            <MdOutlineLockPerson className="input-icon" />
+            <input
+              placeholder="Enter your Password"
+              className={`input ${errors.password ? "input-error" : ""}`}
+              type="password"
+              {...register("password")}
+              disabled={isSubmitting}
+            />
+          </div>
+          {errors.password && (
+            <p className="error-message">{errors.password.message}</p>
+          )}
+        </div>
+
+        <div className="form-footer">
+          <Link href="/forgot-password" className="forgot-password">
+            Forgot password?
+          </Link>
+        </div>
+
+        <button 
+          className="submit-button" 
+          type="submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Signing In..." : "Sign In"}
         </button>
 
-        <Link href="/sign-up">
-          <p className="p">
-            Don't have an account? <span className="span">Sign Up</span>
-          </p>
-          <p className="p line">Or With</p>
-        </Link>
+        <div className="auth-redirect">
+          Don't have an account?{" "}
+          <Link href="/sign-up" className="redirect-link">
+            Sign Up
+          </Link>
+        </div>
       </form>
     </div>
   );
 };
 
-export default Page;
+export default PageSignIn;

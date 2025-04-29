@@ -9,7 +9,11 @@
   --font-mono: var(--font-Mochiy);
 }
 
-
+body {
+  line-height: 1.5;
+  color: #333;
+  @apply bg-cosmic-latte;
+}
 
 @layer base {
   :root {

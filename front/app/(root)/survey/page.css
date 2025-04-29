@@ -1,0 +1,107 @@
+/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Component Styles */
+.perfume-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.configuration-panel {
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.preview-panel {
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(124, 58, 237, 0.25);
+}
+
+.scent-card {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.scent-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.scent-card.selected {
+  border-color: #8B5CF6;
+  background-color: #F5F3FF;
+}
+
+.option-card {
+  transition: all 0.3s ease;
+}
+
+.option-card:hover {
+  transform: scale(1.03);
+}
+
+.option-card.selected {
+  border-color: #8B5CF6;
+  box-shadow: 0 0 0 2px #EDE9FE;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1023px) {
+  .preview-image {
+    max-height: 300px;
+  }
+}
+
+/* Toast Overrides */
+.Toastify__toast {
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 8px !important;
+}
+
+.Toastify__toast--success {
+  background: #ECFDF5 !important;
+  color: #065F46 !important;
+}
+
+.Toastify__toast--error {
+  background: #FEE2E2 !important;
+  color: #B91C1C !important;
+}
+.continu-btn{
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    transition: all 0.3s ease;
+}
+.fade-in {
+    animation: fadeInUp 0.4s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+
+

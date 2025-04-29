@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 import api from '@/lib/api';
-import { toast, } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export default function OrderModal({
   isOpen,
@@ -23,10 +23,13 @@ export default function OrderModal({
     sample: false,
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (isSubmitting) return;
 
+    setIsSubmitting(true);
     try {
       const perfumeRes = await api.post('/client/', {
         top_note: selectedTopNote?.name,
@@ -47,6 +50,7 @@ export default function OrderModal({
         delivery_date: formData.delivery_date,
         sample: formData.sample,
       });
+      //console.log('Order submission error:', err);
 
       toast.success('Order placed successfully!');
       console.log('Order success:', orderRes.data);
@@ -55,10 +59,8 @@ export default function OrderModal({
       const fallbackMessage = 'An unexpected error occurred while submitting your order.';
       let message = fallbackMessage;
 
-      // Log full error
       console.error('Order submission error:', err);
 
-      // Check for HTML response instead of JSON
       if (err.response?.data && typeof err.response.data === 'string' && err.response.data.startsWith('<!DOCTYPE')) {
         message = 'Server returned unexpected HTML. Check if the API route is correct.';
       } else if (err.response?.data?.error) {
@@ -67,7 +69,9 @@ export default function OrderModal({
         message = err.message;
       }
 
-      toast.error(message, { id: toastId });
+      toast.error(message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -75,19 +79,19 @@ export default function OrderModal({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white dark:bg-gray-800 rounded-xl max-w-md w-full p-6 relative">
+      <div className="bg-white dark:bg-gray-800 rounded-xl max-w-lg w-full p-8 relative shadow-lg border-2 border-purple-300 shadow-purple-300 transition-all ease-in-out duration-300">
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-all duration-200"
         >
           <X className="h-6 w-6" />
         </button>
 
-        <h2 className="text-2xl font-bold mb-6">Complete Your Order</h2>
+        <h2 className="text-3xl font-semibold text-center  text-gray-800 dark:text-white">Complete Your Order</h2>
 
-        <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-          <h3 className="font-semibold mb-2">Order Summary</h3>
-          <div className="space-y-2 text-sm">
+        <div className=" p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md">
+          <h3 className="font-semibold mb-3 text-lg text-gray-800 dark:text-white">Order Summary</h3>
+          <div className="space-y-2 text-sm text-gray-700 dark:text-gray-400">
             <p>Top Note: {selectedTopNote?.name || 'None'}</p>
             <p>Middle Note: {selectedMiddleNote?.name || 'None'}</p>
             <p>Base Note: {selectedBaseNote?.name || 'None'}</p>
@@ -95,29 +99,29 @@ export default function OrderModal({
             <p>Intensity: {selectedIntensity?.name}</p>
             <p>Bottle: {selectedBottle?.name}</p>
             <p>Premium Ingredient: {selectedPremium?.name || 'None'}</p>
-            <p className="text-lg font-semibold mt-4">Total: ${totalPrice}</p>
+            <p className="text-xl font-bold mt-4 text-purple-600">Total: ${totalPrice}</p>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Gift Message (optional)</label>
+            <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Gift Message (optional)</label>
             <textarea
               value={formData.gift_message}
               onChange={(e) => setFormData({ ...formData, gift_message: e.target.value })}
-              rows={2}
-              className="w-full p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-transparent"
+              rows={3}
+              className="w-full resize-none h-14 p-3 rounded-md border border-gray-300 dark:border-gray-600 bg-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all duration-200"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Preferred Delivery Date</label>
+            <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Preferred Delivery Date</label>
             <input
               type="date"
               required
               value={formData.delivery_date}
               onChange={(e) => setFormData({ ...formData, delivery_date: e.target.value })}
-              className="w-full p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-transparent"
+              className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 bg-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all duration-200"
             />
           </div>
 
@@ -127,24 +131,25 @@ export default function OrderModal({
               id="sample"
               checked={formData.sample}
               onChange={(e) => setFormData({ ...formData, sample: e.target.checked })}
-              className="h-4 w-4"
+              className="h-5 w-5"
             />
-            <label htmlFor="sample" className="text-sm">Include 25% Sample (adds 25% to price)</label>
+            <label htmlFor="sample" className="text-sm text-gray-700 dark:text-gray-300">Include 25% Sample (adds 25% to price)</label>
           </div>
 
-          <div className="flex gap-3 mt-6">
+          <div className="flex gap-4 mt-4">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 hover:border-purple-600"
+              className="flex-1 px-5 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 px-4 py-2 rounded-full bg-purple-600 text-white hover:bg-purple-700"
+              disabled={isSubmitting}
+              className={`flex-1 px-5 py-3 rounded-full text-white ${isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700'}`}
             >
-              Place Order
+              {isSubmitting ? 'Placing Order...' : 'Place Order'}
             </button>
           </div>
         </form>
